@@ -1,4 +1,8 @@
-in example_dir are:
+
+
+
+
+in example_dir_hetsys are:
 gap_fit			: A symbolic link to the gap_fit program. This will need to be relinked to your build! This is inside ~/QUIP/build/linux_x86_64_gfortran/gap_fit  
 jobqtest.sh  		: A job to run quip on the test atoms. Spits out predictions of a GAP potential for those configs.
 jobqtrain.sh  		: A job to run quip on the train atoms. spits out the predictions of the GAP.
@@ -21,3 +25,9 @@ to re-make a symbolic link:
 
 ln -s /PATH/TO/PROGRAM/program_name program_name
 
+you may run a GAP fit but simply executing the job.sh inside the  example_dir_hetsys directory:
+./job.sh
+
+example_dir_avon is for use on the Avon cluser.
+Here the difference is that you run job.sh by
+sbatch job.sh
