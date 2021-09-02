@@ -25,9 +25,14 @@ to re-make a symbolic link:
 
 ln -s /PATH/TO/PROGRAM/program_name program_name
 
-you may run a GAP fit but simply executing the job.sh inside the  example_dir_hetsys directory:
+ON A HETMATHSYS NODE:
+you may run a GAP fit by simply executing the job.sh inside the  example_dir_hetsys directory:
 ./job.sh
+same for the other .sh
 
-example_dir_avon is for use on the Avon cluser.
+
+AVON/HPC CLUSTER:
+example_dir_avon is for use on the Avon cluster.
 Here the difference is that you run job.sh by
 sbatch job.sh
+same with the other .sh
