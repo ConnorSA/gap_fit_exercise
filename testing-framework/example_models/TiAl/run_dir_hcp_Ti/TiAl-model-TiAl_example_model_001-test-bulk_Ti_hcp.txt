@@ -1,0 +1,597 @@
+
+###### START RUN Thu Sep 23 12:15:19 2021 ######
+Model TiAl_example_model_001, Test bulk_Ti_hcp
+Test run at 2021-09-23 12:15
+
+model file: ../../models/TiAl_example_model_001/model.py
+============================================================
+# Model for Stillinger-Weber with original parameters for Si (Z=14)
+
+#make sure you've got these installed!
+from quippy.potential import Potential
+from utilities import path_of_file
+
+
+# A module defining a module needs to define only one variable,
+# named `calculator`, which should be an instance of the ase.calculator.Calculator,
+# a subclass of this, or a compatible class implementing the calculator interface.
+
+#in this folder you should have your TiAl.xml and all other relavent files. TiAl.xml.sparseX.GAP_number_with_the_data_on_it.
+
+#this is where we are attaching our GAP model as a calculator. If you change the name of your GAP output
+#to something_different.xml  Make sure you make the changes here too!
+calculator = Potential(param_filename=(path_of_file(__file__)+"/TiAl.xml"))
+no_checkpoint = True
+
+#make sure the name of the model matches the folder name the model is contained in.
+name = 'TiAl_example_model_001'
+============================================================
+test file: ../../tests/bulk_Ti_hcp/test.py
+============================================================
+import os.path, lattice
+
+properties = lattice.do_lattice(os.path.abspath(os.path.dirname(__file__)), 'tetragonal')
+============================================================
+relax bulk
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-bulk-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 63 , international (Hermann-Mauguin) Cmcm , Hall  -C 2c 2
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.01 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+/home/physics/phspnt/.local/lib/python3.6/site-packages/ase/optimize/precon/lbfgs.py:136: UserWarning: The system is likely too small to benefit from the standard preconditioner, hence it is disabled. To re-enable preconditioning, call`PreconLBFGS` by explicitly providing the kwarg `precon`
+  'kwarg `precon`')
+PreconLBFGS:   0  12:15:20    -3187.311818       0.0000       0.0123
+PreconLBFGS:   1  12:15:20    -3187.313439       0.0000       0.0034
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.01 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+final relaxed bulk
+2
+Lattice="2.854951908028429 -9.095798092904836e-16 4.861381036450427e-41 -1.4274759540142137 2.472460878935474 2.4663094129732404e-25 -1.5637649078238151e-40 -4.54243680380124e-25 4.553766544196827" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=2 energy=-3187.3134387983955 stress="0.003383534400814034 8.739413277736085e-14 -1.1414099128075078e-17 8.739413277736085e-14 0.003383534400604686 -6.435609074656642e-18 -1.1414099128075078e-17 -6.435609074656642e-18 -0.002605516531993043" free_energy=-3187.3134387983955 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000      -0.00000000      -0.00000000
+Ti       0.00000000       1.64830725       2.27688327       0.00000000       0.00000000       0.00000000
+calculating E vs. V
+2
+Lattice="2.854951908028429 -9.095798092904836e-16 4.861381036450427e-41 -1.4274759540142137 2.472460878935474 2.4663094129732404e-25 -1.5637649078238151e-40 -4.54243680380124e-25 4.553766544196827" Properties=species:S:1:pos:R:3 n_minim_iter=2 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.64830725       2.27688327
+trying to relax i 0
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_000-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:20    -3187.313439       0.0000       0.0040
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.854951908028429 -9.095798092904836e-16 4.861381036450429e-41 -1.4274759540142135 2.472460878935474 2.46630941297324e-25 -2.222618257109537e-40 -4.5424368038012425e-25 4.5537665441968285" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.3134387983773 stress="0.003383534400618431 8.156650829944005e-14 1.6336719451680686e-14 8.156650829944005e-14 0.0033835344005249957 9.45830808351484e-15 1.6336719451680686e-14 9.45830808351484e-15 -0.0026055165325141265" free_energy=-3187.3134387983773 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.64830725       2.27688327      -0.00000000      -0.00000000      -0.00000000
+2
+Lattice="2.8309595812085573 -9.019359200915498e-16 4.820527163467681e-41 -1.4154797906042775 2.4516829144135666 2.4455831438866815e-25 -2.2039399096843394e-40 -4.504263261175554e-25 4.5154977891671795" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.3134387983773 stress="0.003383534400618431 8.156650829944005e-14 1.6336719451680686e-14 8.156650829944005e-14 0.0033835344005249957 9.45830808351484e-15 1.6336719451680686e-14 9.45830808351484e-15 -0.0026055165325141265" free_energy=-3187.3134387983773 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.63445528       2.25774889      -0.00000000      -0.00000000      -0.00000000
+trying to relax i -1
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_-01-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:20    -3187.307044       0.0000       0.0094
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.8309595812085573 -9.019359200915498e-16 4.820527163467681e-41 -1.415479790604278 2.4516829144135666 2.4455831438866815e-25 -1.8789616875049563e-40 -4.504263261175554e-25 4.515497789167181" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.307044049399 stress="-0.012694953007255167 4.817079171393316e-14 -1.605183365286668e-18 4.817079171393316e-14 -0.012694953007199054 2.3800994805760077e-18 -1.605183365286668e-18 2.3800994805760077e-18 -0.026775410058520063" free_energy=-3187.307044049399 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.63445528       2.25774889       0.00000000      -0.00000000       0.00000000
+2
+Lattice="2.8065535427674893 -8.941602235103443e-16 4.778968826839088e-41 -1.403276771383744 2.430546665117862 2.424499481436423e-25 -1.862762935859423e-40 -4.465431473173124e-25 4.476569146965965" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.307044049399 stress="-0.012694953007255167 4.817079171393316e-14 -1.605183365286668e-18 4.817079171393316e-14 -0.012694953007199054 2.3800994805760077e-18 -1.605183365286668e-18 2.3800994805760077e-18 -0.026775410058520063" free_energy=-3187.307044049399 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.62036444       2.23828457       0.00000000      -0.00000000       0.00000000
+trying to relax i -2
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_-02-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:20    -3187.285100       0.0000       0.0150
+PreconLBFGS:   1  12:15:20    -3187.290258       0.0000       0.0001
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.7852108576418835 -8.921871342376e-16 5.175390315975756e-41 -1.3926054288209413 2.4120633576141164 2.406062160276868e-25 -1.8230838819464342e-40 -4.534129646913329e-25 4.545438667608229" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=2 energy=-3187.2902583024907 stress="-0.03314640573915009 3.595776391126187e-14 7.356604887822442e-18 3.595776391126187e-14 -0.0331464057391918 1.9314638384621405e-18 7.356604887822442e-18 1.9314638384621405e-18 -0.03293180657304062" free_energy=-3187.2902583024907 pbc="T T T"
+Ti       0.00000000      -0.00000000      -0.00000000       0.00000000       0.00000000      -0.00000000
+Ti       0.00000000       1.60804224       2.27271933       0.00000000      -0.00000000      -0.00000000
+2
+Lattice="2.760561681238624 -8.84291258779481e-16 5.129587999607432e-41 -1.3802808406193117 2.39071654466653 2.384768458055671e-25 -1.8069495501127276e-40 -4.494002501352566e-25 4.505211436969422" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=2 energy=-3187.2902583024907 stress="-0.03314640573915009 3.595776391126187e-14 7.356604887822442e-18 3.595776391126187e-14 -0.0331464057391918 1.9314638384621405e-18 7.356604887822442e-18 1.9314638384621405e-18 -0.03293180657304062" free_energy=-3187.2902583024907 pbc="T T T"
+Ti       0.00000000      -0.00000000      -0.00000000       0.00000000       0.00000000      -0.00000000
+Ti       0.00000000       1.59381103       2.25260572       0.00000000      -0.00000000      -0.00000000
+trying to relax i -3
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_-03-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:20    -3187.253025       0.0000       0.0036
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.7605616812386247 -8.842912587794811e-16 5.129587999607434e-41 -1.3802808406193117 2.390716544666529 2.384768458055669e-25 -2.910502646046437e-40 -4.494002501352562e-25 4.505211436969422" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.2530246223128 stress="-0.05914580365913918 3.051186844703501e-14 1.1376905398886418e-18 3.051186844703501e-14 -0.05914580365910454 -1.750293131987734e-18 1.1376905398886418e-18 -1.750293131987734e-18 -0.06459632600415792" free_energy=-3187.2530246223128 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000      -0.00000000
+Ti       0.00000000       1.59381103       2.25260572       0.00000000      -0.00000000       0.00000000
+2
+Lattice="2.735464276795896 -8.762518023465423e-16 5.082952800138552e-41 -1.3677321383979473 2.3689815548500737 2.36308754474703e-25 -2.8840420664709484e-40 -4.453145671704592e-25 4.464252702266237" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.2530246223128 stress="-0.05914580365913918 3.051186844703501e-14 1.1376905398886418e-18 3.051186844703501e-14 -0.05914580365910454 -1.750293131987734e-18 1.1376905398886418e-18 -1.750293131987734e-18 -0.06459632600415792" free_energy=-3187.2530246223128 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000      -0.00000000
+Ti       0.00000000       1.57932104       2.23212635       0.00000000      -0.00000000       0.00000000
+trying to relax i -4
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_-04-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:21    -3187.190519       0.0000       0.0056
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.735464276795896 -8.762518023465425e-16 5.082952800138548e-41 -1.367732138397947 2.3689815548500737 2.36308754474703e-25 -2.2560102687659194e-40 -4.453145671704592e-25 4.464252702266237" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.190518696617 stress="-0.09170445857616753 -2.78231783316356e-17 6.395133554028522e-17 -2.78231783316356e-17 -0.09170445857616807 3.118114813583926e-17 6.395133554028522e-17 3.118114813583926e-17 -0.100037339120021" free_energy=-3187.190518696617 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.57932104       2.23212635      -0.00000000      -0.00000000      -0.00000000
+2
+Lattice="2.709897694307741 -8.680620540193122e-16 5.035445788933723e-41 -1.3549488471538695 2.346840244927381 2.3410013222538326e-25 -2.2349248270294663e-40 -4.411525052816174e-25 4.4225282732804025" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.190518696617 stress="-0.09170445857616753 -2.78231783316356e-17 6.395133554028522e-17 -2.78231783316356e-17 -0.09170445857616807 3.118114813583926e-17 6.395133554028522e-17 3.118114813583926e-17 -0.100037339120021" free_energy=-3187.190518696617 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.56456016       2.21126414      -0.00000000      -0.00000000      -0.00000000
+trying to relax i -5
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_-05-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:21    -3187.100968       0.0000       0.0076
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.709897694307741 -8.680620540193123e-16 5.035445788933725e-41 -1.3549488471538698 2.346840244927381 2.341001322253832e-25 -2.546005826147149e-40 -4.411525052816171e-25 4.422528273280401" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.100967747134 stress="-0.12474850584169012 4.105085184446312e-14 -1.295216922334761e-18 4.105085184446312e-14 -0.12474850584173824 -1.1101859287658602e-18 -1.295216922334761e-18 -1.1101859287658602e-18 -0.1360977852077668" free_energy=-3187.100967747134 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000      -0.00000000      -0.00000000
+Ti       0.00000000       1.56456016       2.21126414       0.00000000       0.00000000       0.00000000
+2
+Lattice="2.6838393717025735 -8.597147864850233e-16 4.987025041868444e-41 -1.341919685851286 2.3242730755712957 2.3184902998626358e-25 -2.5215234845031313e-40 -4.369103915203289e-25 4.380001328917265" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.100967747134 stress="-0.12474850584169012 4.105085184446312e-14 -1.295216922334761e-18 4.105085184446312e-14 -0.12474850584173824 -1.1101859287658602e-18 -1.295216922334761e-18 -1.1101859287658602e-18 -0.1360977852077668" free_energy=-3187.100967747134 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000      -0.00000000      -0.00000000
+Ti       0.00000000       1.54951538       2.19000066       0.00000000       0.00000000       0.00000000
+trying to relax i -6
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_-06-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:21    -3186.983884       0.0000       0.0080
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.683839371702573 -8.597147864850232e-16 4.987025041868444e-41 -1.3419196858512858 2.3242730755712957 2.3184902998626353e-25 -1.905344183731488e-40 -4.369103915203286e-25 4.380001328917264" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3186.9838835737723 stress="-0.15884081765920552 -3.170456109080758e-15 9.094422762096572e-15 -3.170456109080758e-15 -0.15884081765922806 4.2084264429735384e-14 9.094422762096572e-15 4.2084264429735384e-14 -0.1707895204317794" free_energy=-3186.9838835737723 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000       0.00000000      -0.00000000      -0.00000000
+Ti       0.00000000       1.54951538       2.19000066      -0.00000000       0.00000000       0.00000000
+2
+Lattice="2.6572649591953645 -8.512021997723145e-16 4.937645312945875e-41 -1.3286324795976816 2.3012589592494064 2.295533442506666e-25 -1.8864781506743122e-40 -4.325842619108723e-25 4.336632130550177" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3186.9838835737723 stress="-0.15884081765920552 -3.170456109080758e-15 9.094422762096572e-15 -3.170456109080758e-15 -0.15884081765922806 4.2084264429735384e-14 9.094422762096572e-15 4.2084264429735384e-14 -0.1707895204317794" free_energy=-3186.9838835737723 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000       0.00000000      -0.00000000      -0.00000000
+Ti       0.00000000       1.53417264       2.16831607      -0.00000000       0.00000000       0.00000000
+trying to relax i -7
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_-07-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:21    -3186.867326       0.0000       0.0478
+PreconLBFGS:   1  12:15:21    -3186.960785       0.0000       0.0119
+PreconLBFGS:   2  12:15:21    -3186.962449       0.0000       0.0002
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.572410172077568 -8.777453173225772e-16 6.117585611939493e-41 -1.2862050860387835 2.227772557972673 2.222229874899817e-25 -1.431194427839855e-40 -4.615938350254317e-25 4.627451418118394" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=3 energy=-3186.9624487382825 stress="-0.050030281265702595 1.7940618701724642e-14 -5.5711989709335634e-14 1.7940618701724642e-14 -0.050030281265789324 -3.2084616446108986e-14 -5.5711989709335634e-14 -3.2084616446108986e-14 -0.050373026668001274" free_energy=-3186.9624487382825 pbc="T T T"
+Ti       0.00000000      -0.00000000       0.00000000      -0.00000000      -0.00000000      -0.00000000
+Ti       0.00000000       1.48518171       2.31372571       0.00000000       0.00000000       0.00000000
+2
+Lattice="2.54615925701094 -8.687881074556311e-16 6.055156912949336e-41 -1.2730796285054695 2.205038598652385 2.1995524775167223e-25 -1.4165893839876484e-40 -4.568833651749936e-25 4.580229231131835" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=3 energy=-3186.9624487382825 stress="-0.050030281265702595 1.7940618701724642e-14 -5.5711989709335634e-14 1.7940618701724642e-14 -0.050030281265789324 -3.2084616446108986e-14 -5.5711989709335634e-14 -3.2084616446108986e-14 -0.050373026668001274" free_energy=-3186.9624487382825 pbc="T T T"
+Ti       0.00000000      -0.00000000       0.00000000      -0.00000000      -0.00000000      -0.00000000
+Ti       0.00000000       1.47002573       2.29011462       0.00000000       0.00000000       0.00000000
+trying to relax i -8
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_-08-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:21    -3186.914836       0.0000       0.0031
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.5461592570109395 -8.68788107455631e-16 6.05515691294933e-41 -1.273079628505469 2.2050385986523855 2.1995524775167227e-25 -2.648203953541038e-40 -4.5688336517499385e-25 4.580229231131835" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3186.914835584599 stress="-0.07050314121068217 1.2257777796782354e-14 -8.095105764592254e-19 1.2257777796782354e-14 -0.07050314121069715 2.6983685839386855e-18 -8.095105764592254e-19 2.6983685839386855e-18 -0.07509566129681775" free_energy=-3186.914835584599 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000      -0.00000000      -0.00000000
+Ti       0.00000000       1.47002573       2.29011462       0.00000000       0.00000000       0.00000000
+2
+Lattice="2.5193555900584235 -8.596422902721902e-16 5.991413685265115e-41 -1.259677795029211 2.1818259421569293 2.1763975739537965e-25 -2.6203260521106383e-40 -4.5207370940716425e-25 4.532012711077406" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3186.914835584599 stress="-0.07050314121068217 1.2257777796782354e-14 -8.095105764592254e-19 1.2257777796782354e-14 -0.07050314121069715 2.6983685839386855e-18 -8.095105764592254e-19 2.6983685839386855e-18 -0.07509566129681775" free_energy=-3186.914835584599 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000      -0.00000000      -0.00000000
+Ti       0.00000000       1.45455063       2.26600636       0.00000000       0.00000000       0.00000000
+trying to relax i -9
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_-09-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:21    -3186.841278       0.0000       0.0050
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.519355590058423 -8.5964229027219e-16 5.991413685265113e-41 -1.2596777950292106 2.1818259421569284 2.176397573953796e-25 -2.041910375582077e-40 -4.5207370940716425e-25 4.532012711077405" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3186.8412777768913 stress="-0.11651261822146868 1.857868554164966e-14 1.3857428362613842e-17 1.857868554164966e-14 -0.11651261822167853 -1.1211286269474377e-17 1.3857428362613842e-17 -1.1211286269474377e-17 -0.10906900393901799" free_energy=-3186.8412777768913 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.45455063       2.26600636       0.00000000      -0.00000000      -0.00000000
+2
+Lattice="2.4919691211336708 -8.502976122275968e-16 5.92628446517632e-41 -1.2459845605668345 2.15810856434814 2.1527392048207555e-25 -2.019713939609055e-40 -4.471594755279802e-25 4.48274780152344" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3186.8412777768913 stress="-0.11651261822146868 1.857868554164966e-14 1.3857428362613842e-17 1.857868554164966e-14 -0.11651261822167853 -1.1211286269474377e-17 1.3857428362613842e-17 -1.1211286269474377e-17 -0.10906900393901799" free_energy=-3186.8412777768913 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.43873904       2.24137390       0.00000000      -0.00000000      -0.00000000
+trying to relax i -10
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_-10-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:21    -3186.727159       0.0000       0.0195
+PreconLBFGS:   1  12:15:21    -3186.730456       0.0000       0.0078
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.500334178342217 -8.527381616148426e-16 5.617028339109219e-41 -1.250167089171108 2.1653529163948515 2.159965532968519e-25 -2.061043833804026e-40 -4.441724687997111e-25 4.452803232354971" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=2 energy=-3186.730455626108 stress="-0.17141826891831136 -2.790652793913771e-16 7.01575832931329e-18 -2.790652793913771e-16 -0.17141826891831125 1.8708688799535216e-18 7.01575832931329e-18 1.8708688799535216e-18 -0.15972702932699484" free_energy=-3186.730455626108 pbc="T T T"
+Ti       0.00000000      -0.00000000      -0.00000000      -0.00000000      -0.00000000      -0.00000000
+Ti       0.00000000       1.44356861       2.22640162       0.00000000       0.00000000       0.00000000
+2
+Lattice="2.8785476219299375 -9.170973387067422e-16 4.901559561272415e-41 -1.4392738109649679 2.49289536659461 2.486693059765141e-25 -1.5766891708457133e-40 -4.579979306334039e-25 4.591402685194148" Properties=species:S:1:pos:R:3 n_minim_iter=2 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.66193024       2.29570134
+trying to relax i 1
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_01-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:21    -3187.304836       0.0000       0.0006
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.878547621929937 -9.170973387067416e-16 4.901559561272415e-41 -1.4392738109649679 2.49289536659461 2.486693059765141e-25 -2.2409878360714604e-40 -4.579979306334038e-25 4.591402685194148" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.3048357857015 stress="0.019735399872433803 -5.1733425316713756e-14 4.383203609120687e-17 -5.1733425316713756e-14 0.01973539987250458 -1.8584704326021735e-14 4.383203609120687e-17 -1.8584704326021735e-14 0.020620298281848578" free_energy=-3187.3048357857015 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.66193024       2.29570134       0.00000000      -0.00000000      -0.00000000
+2
+Lattice="2.9017627182017094 -9.244936043951962e-16 4.94108997453703e-41 -1.450881359100854 2.5130002297172664 2.5067479021241814e-25 -2.259061099116311e-40 -4.616916218445286e-25 4.628431725307021" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.3048357857015 stress="0.019735399872433803 -5.1733425316713756e-14 4.383203609120687e-17 -5.1733425316713756e-14 0.01973539987250458 -1.8584704326021735e-14 4.383203609120687e-17 -1.8584704326021735e-14 0.020620298281848578" free_energy=-3187.3048357857015 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.67533349       2.31421586       0.00000000      -0.00000000      -0.00000000
+trying to relax i 2
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_02-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:21    -3187.281309       0.0000       0.0049
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.9017627182017094 -9.24493604395196e-16 4.941089974537026e-41 -1.450881359100854 2.513000229717266 2.506747902124181e-25 -2.9252731465133484e-40 -4.616916218445287e-25 4.628431725307021" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.2813087412824 stress="0.035945313697310285 1.1435686076780662e-14 -4.9084609556734e-18 1.1435686076780662e-14 0.03594531369732432 2.7754648420354252e-18 -4.9084609556734e-18 2.7754648420354252e-18 0.043338297189908156" free_energy=-3187.2813087412824 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000      -0.00000000
+Ti       0.00000000       1.67533349       2.31421586       0.00000000      -0.00000000      -0.00000000
+2
+Lattice="2.9246121843184167 -9.317733813239698e-16 4.979997796753018e-41 -1.4623060921592077 2.5327884478372464 2.526486887291173e-25 -2.9483077417351085e-40 -4.6532713863007835e-25 4.664877570178319" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.2813087412824 stress="0.035945313697310285 1.1435686076780662e-14 -4.9084609556734e-18 1.1435686076780662e-14 0.03594531369732432 2.7754648420354252e-18 -4.9084609556734e-18 2.7754648420354252e-18 0.043338297189908156" free_energy=-3187.2813087412824 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000      -0.00000000
+Ti       0.00000000       1.68852563       2.33243879       0.00000000      -0.00000000      -0.00000000
+trying to relax i 3
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_03-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:21    -3187.243477       0.0000       0.0092
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.924612184318417 -9.317733813239704e-16 4.979997796753014e-41 -1.4623060921592075 2.532788447837246 2.5264868872911727e-25 -2.6125787279643737e-40 -4.653271386300785e-25 4.664877570178319" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.243477064705 stress="0.050247482984946766 -6.671426416576779e-14 -1.4056617761772596e-18 -6.671426416576779e-14 0.05024748298503739 1.2249338343718717e-17 -1.4056617761772596e-18 1.2249338343718717e-17 0.06400982142699364" free_energy=-3187.243477064705 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.68852563       2.33243879       0.00000000      -0.00000000      -0.00000000
+2
+Lattice="2.9471100852419627 -9.38941150551161e-16 5.018306977584432e-41 -1.4735550426209802 2.552272201568862 2.5459221655751413e-25 -2.63267627720248e-40 -4.689067188281198e-25 4.700762654004844" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.243477064705 stress="0.050247482984946766 -6.671426416576779e-14 -1.4056617761772596e-18 -6.671426416576779e-14 0.05024748298503739 1.2249338343718717e-17 -1.4056617761772596e-18 1.2249338343718717e-17 0.06400982142699364" free_energy=-3187.243477064705 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.70151480       2.35038133       0.00000000      -0.00000000      -0.00000000
+trying to relax i 4
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_04-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:21    -3187.196520       0.0000       0.0052
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.9471100852419623 -9.389411505511608e-16 5.018306977584432e-41 -1.4735550426209802 2.552272201568862 2.5459221655751413e-25 -2.6326762772024796e-40 -4.689067188281196e-25 4.700762654004843" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.1965198609983 stress="0.057975536099674166 -7.668272915186477e-17 -3.031985068190826e-17 -7.668272915186477e-17 0.057975536099673916 5.298614690657318e-18 -3.031985068190826e-17 5.298614690657318e-18 0.06570125202747931" free_energy=-3187.1965198609983 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000      -0.00000000       0.00000000
+Ti       0.00000000       1.70151480       2.35038133       0.00000000      -0.00000000      -0.00000000
+2
+Lattice="2.969269639740551 -9.460011235398853e-16 5.056040025805907e-41 -1.4846348198702746 2.5714629387011856 2.565065156283137e-25 -2.6524715789572225e-40 -4.724324656411278e-25 4.736108061269397" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.1965198609983 stress="0.057975536099674166 -7.668272915186477e-17 -3.031985068190826e-17 -7.668272915186477e-17 0.057975536099673916 5.298614690657318e-18 -3.031985068190826e-17 5.298614690657318e-18 0.06570125202747931" free_energy=-3187.1965198609983 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000      -0.00000000      -0.00000000       0.00000000
+Ti       0.00000000       1.71430863       2.36805403       0.00000000      -0.00000000      -0.00000000
+trying to relax i 5
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_05-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:22    -3187.147835       0.0000       0.0035
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.9692696397405496 -9.460011235398845e-16 5.056040025805906e-41 -1.4846348198702737 2.5714629387011843 2.5650651562831352e-25 -2.9933270171977627e-40 -4.724324656411277e-25 4.736108061269396" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.1478345357673 stress="0.06189683089815231 -1.6525954541677335e-14 4.377353487520262e-18 -1.6525954541677335e-14 0.06189683089817042 -8.922605456748196e-18 4.377353487520262e-18 -8.922605456748196e-18 0.056651141983997816" free_energy=-3187.1478345357673 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000      -0.00000000
+Ti       0.00000000       1.71430863       2.36805403      -0.00000000      -0.00000000       0.00000000
+2
+Lattice="2.9911032888488465 -9.529572639694985e-16 5.09321812587586e-41 -1.4955516444244221 2.590371433486285 2.583926606860961e-25 -3.0153375651403174e-40 -4.759063585284969e-25 4.770933635937572" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3187.1478345357673 stress="0.06189683089815231 -1.6525954541677335e-14 4.377353487520262e-18 -1.6525954541677335e-14 0.06189683089817042 -8.922605456748196e-18 4.377353487520262e-18 -8.922605456748196e-18 0.056651141983997816" free_energy=-3187.1478345357673 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000      -0.00000000
+Ti       0.00000000       1.72691429       2.38546682      -0.00000000      -0.00000000       0.00000000
+trying to relax i 6
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_06-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:22    -3187.099529       0.0000       0.0140
+PreconLBFGS:   1  12:15:22    -3187.126485       0.0000       0.0014
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.9362623651284276 -9.276914613071402e-16 6.412713604327422e-41 -1.468131182564213 2.5428778003773975 2.5365511375903714e-25 -2.2037418999430698e-40 -4.938494912950789e-25 4.950812501004374" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=2 energy=-3187.1264849580934 stress="0.06251478991883011 7.830431002202121e-14 -4.340853815795854e-19 7.830431002202121e-14 0.06251478991873996 3.8011801061287586e-18 -4.340853815795854e-19 3.8011801061287586e-18 0.06458674651181492" free_energy=-3187.1264849580934 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000
+Ti       0.00000000       1.69525187       2.47540625      -0.00000000       0.00000000       0.00000000
+2
+Lattice="2.9573872811251767 -9.343657300726827e-16 6.458849820835684e-41 -1.4786936405625875 2.5611725142833945 2.5548003343717737e-25 -2.2195967033379215e-40 -4.97402487492743e-25 4.986431081769311" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=2 energy=-3187.1264849580934 stress="0.06251478991883011 7.830431002202121e-14 -4.340853815795854e-19 7.830431002202121e-14 0.06251478991873996 3.8011801061287586e-18 -4.340853815795854e-19 3.8011801061287586e-18 0.06458674651181492" free_energy=-3187.1264849580934 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000
+Ti       0.00000000       1.70744834       2.49321554      -0.00000000       0.00000000       0.00000000
+trying to relax i 7
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_07-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:22    -3187.058485       0.0000       0.0346
+PreconLBFGS:   1  12:15:22    -3187.067594       0.0000       0.0113
+PreconLBFGS:   2  12:15:22    -3187.070139       0.0000       0.0000
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="2.975220546610502 -9.305996114529576e-16 5.459692053414311e-41 -1.48761027330525 2.576616575226118 2.5702059705952166e-25 -2.792632623961412e-40 -4.914575657897284e-25 4.926833586573769" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=3 energy=-3187.0701385625066 stress="0.07705197742390654 4.4871383677896145e-14 -2.2964839048488705e-20 4.4871383677896145e-14 0.07705197742388853 -1.1482419445539808e-18 -2.2964839048488705e-20 -1.1482419445539808e-18 0.0770279495928156" free_energy=-3187.0701385625066 pbc="T T T"
+Ti      -0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.71774438       2.46341679       0.00000000      -0.00000000      -0.00000000
+2
+Lattice="2.9961734943211584 -9.371533457704168e-16 5.498141855813599e-41 -1.4980867471605783 2.5947623602277137 2.5883066090063255e-25 -2.8122996988650182e-40 -4.94918648595751e-25 4.961530740919585" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=3 energy=-3187.0701385625066 stress="0.07705197742390654 4.4871383677896145e-14 -2.2964839048488705e-20 4.4871383677896145e-14 0.07705197742388853 -1.1482419445539808e-18 -2.2964839048488705e-20 -1.1482419445539808e-18 0.0770279495928156" free_energy=-3187.0701385625066 pbc="T T T"
+Ti      -0.00000000       0.00000000       0.00000000      -0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.72984157       2.48076537       0.00000000      -0.00000000      -0.00000000
+trying to relax i 8
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_08-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:22    -3186.992354       0.0000       0.0321
+PreconLBFGS:   1  12:15:22    -3187.000152       0.0000       0.0001
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="3.0079267826462392 -9.413360906646074e-16 5.367923798020337e-41 -1.5039633913231185 2.604941006495236 2.5984599308707043e-25 -2.1183132724017323e-40 -4.910584768809246e-25 4.922832743414979" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=2 energy=-3187.0001519364027 stress="0.106823925214639 -7.443775803413653e-14 -9.268896100461704e-17 -7.443775803413653e-14 0.10682392521465817 -2.3116316562154134e-13 -9.268896100461704e-17 -2.3116316562154134e-13 0.10703843579112264" free_energy=-3187.0001519364027 pbc="T T T"
+Ti      -0.00000000      -0.00000000       0.00000000      -0.00000000       0.00000000      -0.00000000
+Ti       0.00000000       1.73662734       2.46141637       0.00000000      -0.00000000       0.00000000
+2
+Lattice="3.028671760830459 -9.47828268857747e-16 5.404945132025854e-41 -1.5143358804152285 2.6229066846037243 2.6163809104934396e-25 -2.1329227911163658e-40 -4.944451940872221e-25 4.956784386937652" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=2 energy=-3187.0001519364027 stress="0.106823925214639 -7.443775803413653e-14 -9.268896100461704e-17 -7.443775803413653e-14 0.10682392521465817 -2.3116316562154134e-13 -9.268896100461704e-17 -2.3116316562154134e-13 0.10703843579112264" free_energy=-3187.0001519364027 pbc="T T T"
+Ti      -0.00000000      -0.00000000       0.00000000      -0.00000000       0.00000000      -0.00000000
+Ti       0.00000000       1.74860446       2.47839219       0.00000000      -0.00000000       0.00000000
+trying to relax i 9
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_09-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:22    -3186.891593       0.0000       0.0101
+PreconLBFGS:   1  12:15:22    -3186.892318       0.0000       0.0000
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="3.0323446714673996 -9.459052942495423e-16 5.552907156771521e-41 -1.5161723357336994 2.6260875185211456 2.619553830517566e-25 -1.3641455428578352e-40 -4.932481315054095e-25 4.944783903999054" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=2 energy=-3186.8923178444616 stress="0.1604173534396593 8.560811141667107e-14 7.048799577332029e-19 8.560811141667107e-14 0.16041735343871058 -1.0044539388679007e-17 7.048799577332029e-19 -1.0044539388679007e-17 0.16041989707231438" free_energy=-3186.8923178444616 pbc="T T T"
+Ti       0.00000000      -0.00000000      -0.00000000       0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.75072501       2.47239195      -0.00000000      -0.00000000      -0.00000000
+2
+Lattice="3.0528341083451336 -9.522967401168953e-16 5.590427937884286e-41 -1.5264170541725663 2.643831891366501 2.6372540554831676e-25 -1.3733630220762849e-40 -4.96580990250207e-25 4.9781956195696315" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=2 energy=-3186.8923178444616 stress="0.1604173534396593 8.560811141667107e-14 7.048799577332029e-19 8.560811141667107e-14 0.16041735343871058 -1.0044539388679007e-17 7.048799577332029e-19 -1.0044539388679007e-17 0.16041989707231438" free_energy=-3186.8923178444616 pbc="T T T"
+Ti       0.00000000      -0.00000000      -0.00000000       0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.76255459       2.48909781      -0.00000000      -0.00000000      -0.00000000
+trying to relax i 10
+relax_config failed to read base run config from  TiAl-model-None-test-bulk_Ti_hcp-E_vs_V_10-relaxed.xyz
+relax_config symmetry before refinement at default tol 1.0e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config symmetry after refinement
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+relax_config trying to maintain symmetry
+PreconLBFGS:   0  12:15:22    -3186.743426       0.0000       0.0097
+symmetry at end of relaxation at desired tol
+ase.spacegroup.symmetrize: prec 0.1 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+symmetry at end of relaxation at default tol 1e-6
+ase.spacegroup.symmetrize: prec 1e-06 got symmetry group number 194 , international (Hermann-Mauguin) P6_3/mmc , Hall  -P 6c 2c
+2
+Lattice="3.0528341083451327 -9.522967401168947e-16 5.590427937884288e-41 -1.5264170541725657 2.6438318913665007 2.6372540554831667e-25 -2.4606476155543507e-40 -4.965809902502071e-25 4.978195619569631" Properties=species:S:1:pos:R:3:forces:R:3 n_minim_iter=1 energy=-3186.7434256504757 stress="0.20384078076672413 -5.839459590007824e-14 -3.9719985618266014e-18 -5.839459590007824e-14 0.20384078076679094 -7.425910345234299e-18 -3.9719985618266014e-18 -7.425910345234299e-18 0.21845638062455844" free_energy=-3186.7434256504757 pbc="T T T"
+Ti       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000
+Ti       0.00000000       1.76255459       2.48909781      -0.00000000      -0.00000000       0.00000000
+calculating elastic constants
+PreconLBFGS:   0  12:15:22    -3187.307714       0.0448
+PreconLBFGS:   0  12:15:22    -3187.312511       0.0239
+PreconLBFGS:   0  12:15:22    -3187.313439       0.0000
+PreconLBFGS:   0  12:15:22    -3187.310296       0.0269
+PreconLBFGS:   0  12:15:22    -3187.303289       0.0569
+INFO:ase.utils.linesearcharmijo:a1 = 1.000, suff_dec = True
+PreconLBFGS:   1  12:15:22    -3187.303380       0.0557
+INFO:ase.utils.linesearcharmijo:a1 = 0.042, suff_dec = True
+PreconLBFGS:   2  12:15:22    -3187.303559       0.0534
+INFO:ase.utils.linesearcharmijo:a1 = 0.089, suff_dec = True
+PreconLBFGS:   3  12:15:22    -3187.303902       0.0488
+PreconLBFGS:   0  12:15:23    -3187.296740       0.0511
+INFO:ase.utils.linesearcharmijo:a1 = 1.000, suff_dec = True
+PreconLBFGS:   1  12:15:23    -3187.296813       0.0495
+PreconLBFGS:   0  12:15:23    -3187.308889       0.0256
+PreconLBFGS:   0  12:15:23    -3187.313439       0.0000
+PreconLBFGS:   0  12:15:23    -3187.310686       0.0251
+PreconLBFGS:   0  12:15:23    -3187.301045       0.0492
+Fitting C_11
+Strain array([-0.02, -0.01,  0.  ,  0.01,  0.02])
+Stress array([-2.71908776, -1.14336139,  0.54210197,  2.28896775,  3.58035112]) GPa
+Cij (gradient) / GPa    :     160.31206896416262
+Error in Cij / GPa      :     4.221562154540541
+Correlation coefficient :     0.9989614480386312
+Setting C11 (1) to 1.000589 +/- 0.026349
+
+
+Fitting C_21
+Strain array([-0.02, -0.01,  0.  ,  0.01,  0.02])
+Stress array([-0.70451624, -0.08240074,  0.54210197,  1.18723828,  1.98635289]) GPa
+Cij (gradient) / GPa    :     66.51377276844133
+Error in Cij / GPa      :     2.0422344652937463
+Correlation coefficient :     0.9985888951433904
+Setting C21 (7) to 0.415146 +/- 0.012747
+
+
+Fitting C_31
+Strain array([-0.02, -0.01,  0.  ,  0.01,  0.02])
+Stress array([-2.10673351, -1.19288619, -0.41744977,  0.27736538,  0.9546052 ]) GPa
+Cij (gradient) / GPa    :     75.92928997793338
+Error in Cij / GPa      :     2.7910651764198073
+Correlation coefficient :     0.9979793335183172
+Setting C31 (8) to 0.473913 +/- 0.017420
+
+
+Fitting C_61
+Strain array([-0.02, -0.01,  0.  ,  0.01,  0.02])
+Stress array([-2.48833084e-15, -8.61126009e-16,  1.40020836e-11,  1.44543995e-14,
+       -5.96649464e-12]) GPa
+Cij (gradient) / GPa    :     -1.1912697100498247e-10
+Error in Cij / GPa      :     2.6109802016287024e-10
+Correlation coefficient :     -0.2547287705069609      <----- WARNING
+Setting C61 (0) to -0.000000 +/- 0.000000
+
+
+Fitting C_44
+Strain array([-0.02, -0.01,  0.  ,  0.01,  0.02])
+Stress array([-6.17538739e-01, -3.00659205e-01, -1.03109824e-15,  2.89138848e-01,
+        5.67093479e-01]) GPa
+Cij (gradient) / GPa    :     29.590624894949762
+Error in Cij / GPa      :     0.4371537334106438
+Correlation coefficient :     0.9996727812626337
+Setting C44 (4) to 0.184690 +/- 0.002728
+
+
+Fitting C_33
+Strain array([-0.02, -0.01,  0.  ,  0.01,  0.02])
+Stress array([-6.75640155, -3.55508265, -0.41744977,  2.60172235,  5.4620882 ]) GPa
+Cij (gradient) / GPa    :     305.9378449642294
+Error in Cij / GPa      :     3.9439397713526865
+Correlation coefficient :     0.9997508143392815
+Setting C33 (3) to 1.909514 +/- 0.024616
+
+
+Fitting C_66
+Strain array([-0.02, -0.01,  0.  ,  0.01,  0.02])
+Stress array([-1.22287598e+00, -5.93050970e-01,  1.40020836e-11,  5.26531962e-01,
+        9.82185273e-01]) GPa
+Cij (gradient) / GPa    :     55.29705434132087
+Error in Cij / GPa      :     2.0346291983917775
+Correlation coefficient :     0.997975408790293
+Setting C66 (6) to 0.345137 +/- 0.012699
+
+
+[[b C11 b C12 b C13 b     b     b    ]
+ [b C12 b C11 b C13 b     b     b    ]
+ [b C13 b C13 b C33 b     b     b    ]
+ [b     b     b     b C44 b     b    ]
+ [b     b     b     b     b C44 b    ]
+ [b     b     b     b     b     b C66]]
+
+ = 
+
+[[160.31  66.51  75.93   0.     0.     0.  ]
+ [ 66.51 160.31  75.93   0.     0.     0.  ]
+ [ 75.93  75.93 305.94   0.     0.     0.  ]
+ [  0.     0.     0.    29.59   0.     0.  ]
+ [  0.     0.     0.     0.    29.59   0.  ]
+ [  0.     0.     0.     0.     0.    55.3 ]]
+C_11 = 160.31 +/- 4.22 GPa
+C_12 = 66.51 +/- 2.04 GPa
+C_13 = 75.93 +/- 2.79 GPa
+C_33 = 305.94 +/- 3.94 GPa
+C_44 = 29.59 +/- 0.44 GPa
+C_66 = 55.30 +/- 2.03 GPa
+============================================================
+Property calculation output:
+
+
+Summary of computed properties:
+{'E_vs_V': [(12.053974137126092, -1593.365227813054, [-0.17141826891831136, -0.17141826891831125, -0.15972702932699484, 1.8708688799535216e-18, 7.01575832931329e-18, -2.790652793913771e-16]), (12.455773275030294, -1593.4206388884456, [-0.11651261822146868, -0.11651261822167853, -0.10906900393901799, -1.1211286269474377e-17, 1.3857428362613842e-17, 1.857868554164966e-14]), (12.857572412934502, -1593.4574177922996, [-0.07050314121068217, -0.07050314121069715, -0.07509566129681775, 2.6983685839386855e-18, -8.095105764592254e-19, 1.2257777796782354e-14]), (13.259371550838706, -1593.4812243691413, [-0.050030281265702595, -0.050030281265789324, -0.050373026668001274, -3.2084616446108986e-14, -5.5711989709335634e-14, 1.7940618701724642e-14]), (13.661170688742905, -1593.4919417868862, [-0.15884081765920552, -0.15884081765922806, -0.1707895204317794, 4.2084264429735384e-14, 9.094422762096572e-15, -3.170456109080758e-15]), (14.062969826647109, -1593.550483873567, [-0.12474850584169012, -0.12474850584173824, -0.1360977852077668, -1.1101859287658602e-18, -1.295216922334761e-18, 4.105085184446312e-14]), (14.464768964551315, -1593.5952593483084, [-0.09170445857616753, -0.09170445857616807, -0.100037339120021, 3.118114813583926e-17, 6.395133554028522e-17, -2.78231783316356e-17]), (14.86656810245551, -1593.6265123111564, [-0.05914580365913918, -0.05914580365910454, -0.06459632600415792, -1.750293131987734e-18, 1.1376905398886418e-18, 3.051186844703501e-14]), (15.268367240359707, -1593.6451291512453, [-0.03314640573915009, -0.0331464057391918, -0.03293180657304062, 1.9314638384621405e-18, 7.356604887822442e-18, 3.595776391126187e-14]), (15.670166378263936, -1593.6535220246994, [-0.012694953007255167, -0.012694953007199054, -0.026775410058520063, 2.3800994805760077e-18, -1.605183365286668e-18, 4.817079171393316e-14]), (16.071965516168135, -1593.6567193991887, [0.003383534400618431, 0.0033835344005249957, -0.0026055165325141265, 9.45830808351484e-15, 1.6336719451680686e-14, 8.156650829944005e-14]), (16.47376465407232, -1593.6524178928507, [0.019735399872433803, 0.01973539987250458, 0.020620298281848578, -1.8584704326021735e-14, 4.383203609120687e-17, -5.1733425316713756e-14]), (16.87556379197653, -1593.6406543706412, [0.035945313697310285, 0.03594531369732432, 0.043338297189908156, 2.7754648420354252e-18, -4.9084609556734e-18, 1.1435686076780662e-14]), (17.277362929880738, -1593.6217385323525, [0.050247482984946766, 0.05024748298503739, 0.06400982142699364, 1.2249338343718717e-17, -1.4056617761772596e-18, -6.671426416576779e-14]), (17.679162067784947, -1593.5982599304991, [0.057975536099674166, 0.057975536099673916, 0.06570125202747931, 5.298614690657318e-18, -3.031985068190826e-17, -7.668272915186477e-17]), (18.080961205689118, -1593.5739172678836, [0.06189683089815231, 0.06189683089817042, 0.056651141983997816, -8.922605456748196e-18, 4.377353487520262e-18, -1.6525954541677335e-14]), (18.482760343593316, -1593.5632424790467, [0.06251478991883011, 0.06251478991873996, 0.06458674651181492, 3.8011801061287586e-18, -4.340853815795854e-19, 7.830431002202121e-14]), (18.884559481497515, -1593.5350692812533, [0.07705197742390654, 0.07705197742388853, 0.0770279495928156, -1.1482419445539808e-18, -2.2964839048488705e-20, 4.4871383677896145e-14]), (19.286358619401756, -1593.5000759682014, [0.106823925214639, 0.10682392521465817, 0.10703843579112264, -2.3116316562154134e-13, -9.268896100461704e-17, -7.443775803413653e-14]), (19.688157757305962, -1593.4461589222308, [0.1604173534396593, 0.16041735343871058, 0.16041989707231438, -1.0044539388679007e-17, 7.048799577332029e-19, 8.560811141667107e-14]), (20.08995689521015, -1593.3717128252379, [0.20384078076672413, 0.20384078076679094, 0.21845638062455844, -7.425910345234299e-18, -3.9719985618266014e-18, -5.839459590007824e-14])], 'c11': 160.31206896416262, 'c33': 305.9378449642294, 'c12': 66.51377276844133, 'c13': 75.92928997793338, 'c44': 29.590624894949762, 'c66': 55.29705434132087, 'B': 113.15276707315468}
+============================================================
